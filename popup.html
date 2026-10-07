@@ -1,0 +1,83 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+  :root {
+    --bg: #1a1a1a; --panel: #262626; --fill: #ffffff12; --fill2: #ffffff1f; --border: #ffffff14;
+    --text: #eff1f6; --text2: #eff1f6bf; --muted: #ffffff8c; --orange: #ffa116; --green: #2cbb5d;
+    color-scheme: dark;
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #f0f0f0; --panel: #ffffff; --fill: #000a200d; --fill2: #000a2014; --border: #0000000f;
+      --text: #262626; --text2: #262626bf; --muted: #3c3c43a6; --orange: #c26e00; --green: #1a9e4b;
+      color-scheme: light;
+    }
+  }
+  * { box-sizing: border-box; }
+  ::selection { background: #ffa11640; }
+  body {
+    width: 300px; margin: 0; background: var(--bg); color: var(--text);
+    font: 13px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased;
+  }
+  header { display: flex; align-items: center; gap: 10px; padding: 16px 16px 14px; }
+  header img { width: 32px; height: 32px; }
+  h1 { margin: 0; font-size: 17px; font-weight: 600; line-height: 1.25; letter-spacing: -0.01em; }
+  .sub { margin: 0; color: var(--muted); font-size: 12px; }
+
+  main { padding: 0 12px 12px; display: grid; gap: 8px; }
+  .card { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; }
+
+  .toggle { display: flex; align-items: center; gap: 12px; padding: 12px; cursor: pointer; }
+  .toggle-text { flex: 1; }
+  .toggle-title { display: block; font-weight: 500; }
+  .toggle-hint { display: block; color: var(--muted); font-size: 12px; }
+  .switch {
+    appearance: none; margin: 0; flex: none; position: relative; width: 34px; height: 20px; border-radius: 10px;
+    background: var(--fill2); cursor: pointer; transition: background-color .2s cubic-bezier(.16, 1, .3, 1);
+  }
+  .switch::after {
+    content: ""; position: absolute; top: 2px; left: 2px; width: 16px; height: 16px; border-radius: 50%;
+    background: #fff; box-shadow: 0 1px 2px #0000004d; transition: transform .2s cubic-bezier(.16, 1, .3, 1);
+  }
+  .switch:checked { background: var(--green); }
+  .switch:checked::after { transform: translateX(14px); }
+  .switch:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; }
+
+  h2 { margin: 0; padding: 10px 12px 4px; font-size: 12px; font-weight: 500; color: var(--muted); }
+  dl { margin: 0; padding: 0 4px 4px; }
+  dl div { display: flex; align-items: center; justify-content: space-between; padding: 6px 8px; border-radius: 6px; }
+  dt { color: var(--text2); }
+  dd { margin: 0; display: flex; gap: 3px; }
+  kbd {
+    min-width: 20px; height: 20px; padding: 0 5px; display: inline-grid; place-items: center; border-radius: 4px;
+    background: var(--fill2); box-shadow: inset 0 -1px 0 var(--border); color: var(--text);
+    font: 11px/1 ui-monospace, Menlo, monospace;
+  }
+</style></head>
+<body>
+  <header>
+    <img src="icons/icon48.png" alt="">
+    <div>
+      <h1>LeetForces</h1>
+      <p class="sub">LeetCode-style workspace for Codeforces problems</p>
+    </div>
+  </header>
+  <main>
+    <label class="card toggle">
+      <span class="toggle-text">
+        <span class="toggle-title">Open automatically</span>
+        <span class="toggle-hint">Skip the classic problem page</span>
+      </span>
+      <input type="checkbox" role="switch" class="switch" id="auto">
+    </label>
+    <section class="card">
+      <h2>Shortcuts</h2>
+      <dl>
+        <div><dt>Run on testcases</dt><dd><kbd class="mod">Ctrl</kbd><kbd>'</kbd></dd></div>
+        <div><dt>Submit</dt><dd><kbd class="mod">Ctrl</kbd><kbd>Enter</kbd></dd></div>
+        <div><dt>Save</dt><dd><kbd class="mod">Ctrl</kbd><kbd>S</kbd></dd></div>
+      </dl>
+    </section>
+  </main>
+  <script src="popup.js"></script>
+</body></html>
